@@ -18,6 +18,9 @@ import './_metronic/assets/sass/style.react.scss'
 import {AppRoutes} from './app/routing/AppRoutes'
 import {AuthProvider, setupAxios} from './app/modules/auth'
 import {ThemeModeProvider} from './_metronic/partials/layout/theme-mode/ThemeModeProvider'
+
+import { ChakraProvider } from '@chakra-ui/react'
+
 /**
  * Creates `axios-mock-adapter` instance for provided `axios` instance, add
  * basic Metronic mocks and returns it.
@@ -39,9 +42,11 @@ if (container) {
     <QueryClientProvider client={queryClient}>
       <MetronicI18nProvider>
         <ThemeModeProvider>
-          <AuthProvider>
-            <AppRoutes />
-          </AuthProvider>
+          <ChakraProvider>
+            <AuthProvider>
+              <AppRoutes />
+            </AuthProvider>
+          </ChakraProvider>
         </ThemeModeProvider>
       </MetronicI18nProvider>
       <ReactQueryDevtools initialIsOpen={false} />
